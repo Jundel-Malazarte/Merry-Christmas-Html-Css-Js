@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a3a52 0%, #2c5aa0 50%, #1a3a52 100%);
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Snowflake styles */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: #fff;
+            font-size: 1.5em;
+            opacity: 0.8;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotateZ(0deg);
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotateZ(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Left side - Christmas Tree */
+        .tree-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tree {
+            position: relative;
+        }
+
+        .tree-layer {
+            margin: 0 auto;
+            background: linear-gradient(135deg, #0d5a2d 0%, #1a7a3e 100%);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            position: relative;
+        }
+
+        .tree-layer:nth-child(1) {
+            width: 120px;
+            height: 100px;
+            margin-bottom: -15px;
+        }
+
+        .tree-layer:nth-child(2) {
+            width: 160px;
+            height: 120px;
+            margin-bottom: -20px;
+        }
+
+        .tree-layer:nth-child(3) {
+            width: 200px;
+            height: 140px;
+        }
+
+        .trunk {
+            width: 30px;
+            height: 60px;
+            background: #6b4423;
+            margin: 0 auto;
+            margin-top: -10px;
+            border-radius: 5px;
+        }
+
+        .ornament {
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: inset -2px -2px 5px rgba(0,0,0,0.3), 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .ornament.red {
+            background: radial-gradient(circle at 30% 30%, #ff4444, #cc0000);
+            width: 20px;
+            height: 20px;
+        }
+
+        .ornament.blue {
+            background: radial-gradient(circle at 30% 30%, #4488ff, #0000cc);
+            width: 18px;
+            height: 18px;
+        }
+
+        .ornament.gold {
+            background: radial-gradient(circle at 30% 30%, #ffdd44, #ffaa00);
+            width: 16px;
+            height: 16px;
+        }
+
+        .star {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 25px solid #ffdd00;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 0, 0.8));
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Right side - Greeting */
+        .greeting-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .greeting {
+            font-size: 4em;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 100, 100, 0.6);
+            text-align: center;
+            margin-bottom: 40px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 100, 100, 0.6);
+            }
+            50% {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 100, 100, 0.9);
+            }
+        }
+
+        .gifts {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .gift {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .gift:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .gift:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .gift-box {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .gift:nth-child(1) .gift-box {
+            background: linear-gradient(135deg, #e31b23 0%, #c41812 100%);
+        }
+
+        .gift:nth-child(2) .gift-box {
+            background: linear-gradient(135deg, #1e90ff 0%, #0047ab 100%);
+        }
+
+        .gift:nth-child(3) .gift-box {
+            background: linear-gradient(135deg, #228b22 0%, #0b5f0b 100%);
+        }
+
+        .ribbon {
+            position: absolute;
+            background: #ffd700;
+        }
+
+        .ribbon-h {
+            width: 100%;
+            height: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .ribbon-v {
+            width: 15px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .bow {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ff69b4;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: inset -2px -2px 5px rgba(0,0,0,0.2), 0 0 10px rgba(255,255,255,0.4);
+        }
+
+        /* Background snow effect */
+        .background-snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .greeting {
+                font-size: 2.5em;
+            }
+
+            .tree-section {
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-snow"></div>
+    
+    <div class="container">
+        <!-- Left side - Christmas Tree -->
+        <div class="tree-section">
+            <div class="tree">
+                <div class="star"></div>
+                
+                <div class="tree-layer">
+                    <div class="ornament red" style="top: 20px; left: 20px;"></div>
+                    <div class="ornament blue" style="top: 40px; right: 30px;"></div>
+                    <div class="ornament gold" style="top: 60px; left: 40px;"></div>
+                </div>
+
+                <div class="tree-layer">
+                    <div class="ornament blue" style="top: 30px; left: 25px;"></div>
+                    <div class="ornament red" style="top: 50px; right: 35px;"></div>
+                    <div class="ornament gold" style="top: 70px; left: 50px;"></div>
+                    <div class="ornament red" style="top: 80px; right: 50px;"></div>
+                </div>
+
+                <div class="tree-layer">
+                    <div class="ornament gold" style="top: 40px; left: 30px;"></div>
+                    <div class="ornament blue" style="top: 60px; right: 40px;"></div>
+                    <div class="ornament red" style="top: 80px; left: 55px;"></div>
+                    <div class="ornament gold" style="top: 100px; right: 60px;"></div>
+                    <div class="ornament blue" style="top: 110px; left: 70px;"></div>
+                </div>
+
+                <div class="trunk"></div>
+            </div>
+        </div>
+
+        <!-- Right side - Greeting and Gifts -->
+        <div class="greeting-section">
+            <div class="greeting">🎄 Merry Christmas 🎄 { yourname }</div>
+            
+            <div class="gifts">
+                <div class="gift">
+                    <div class="gift-box">
+                        <div class="ribbon ribbon-h"></div>
+                        <div class="ribbon ribbon-v"></div>
+                        <div class="bow"></div>
+                    </div>
+                </div>
+                <div class="gift">
+                    <div class="gift-box">
+                        <div class="ribbon ribbon-h"></div>
+                        <div class="ribbon ribbon-v"></div>
+                        <div class="bow"></div>
+                    </div>
+                </div>
+                <div class="gift">
+                    <div class="gift-box">
+                        <div class="ribbon ribbon-h"></div>
+                        <div class="ribbon ribbon-v"></div>
+                        <div class="bow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create falling snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            
+            const randomLeft = Math.random() * window.innerWidth;
+            const randomDelay = Math.random() * 2;
+            const randomDuration = 8 + Math.random() * 6;
+            const randomOpacity = 0.3 + Math.random() * 0.7;
+            
+            snowflake.style.left = randomLeft + 'px';
+            snowflake.style.animationDelay = randomDelay + 's';
+            snowflake.style.animationDuration = randomDuration + 's';
+            snowflake.style.opacity = randomOpacity;
+            
+            document.body.appendChild(snowflake);
+            
+            // Remove snowflake after animation completes
+            setTimeout(() => {
+                snowflake.remove();
+            }, (randomDuration + randomDelay) * 1000);
+        }
+
+        // Create snowflakes continuously
+        setInterval(createSnowflake, 300);
+
+        // Create initial snowflakes
+        for (let i = 0; i < 50; i++) {
+            setTimeout(createSnowflake, i * 100);
+        }
+    </script>
+</body>
+</html>
